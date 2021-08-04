@@ -1,6 +1,8 @@
 <template>
 	<div class="top-nav">
-		<div class="logo">logo</div>
+		<div class="logo">
+			<img src="../assets/logo.png" alt="X-UI" /><span class="text">X-UI</span>
+		</div>
 		<ul class="menu">
 			<li>菜单1</li>
 			<li>菜单2</li>
@@ -23,6 +25,13 @@
 		justify-content: center;
 		align-items: center;
 		margin-left: 32px;
+		> img {
+			width: 40px;
+			height: 40px;
+		}
+		> .text {
+			margin-left: 6px;
+		}
 	}
 
 	> .menu {

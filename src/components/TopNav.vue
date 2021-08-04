@@ -1,12 +1,13 @@
 <template>
 	<div class="top-nav">
-		<div class="logo" @click="toggleMenu">
+		<div class="logo">
 			<img src="../assets/logo.png" alt="X-UI" /><span class="text">X-UI</span>
 		</div>
 		<ul class="menu">
 			<li>菜单1</li>
 			<li>菜单2</li>
 		</ul>
+		<span class="toggleAside" @click="toggleMenu"></span>
 	</div>
 </template>
 
@@ -40,7 +41,6 @@ export default {
 		justify-content: center;
 		align-items: center;
 		margin-left: 32px;
-		cursor: pointer;
 		> img {
 			width: 40px;
 			height: 40px;
@@ -56,6 +56,30 @@ export default {
 		flex-wrap: nowrap;
 		> li {
 			margin: 0 20px;
+		}
+	}
+
+	> .toggleAside {
+		display: none;
+		width: 24px;
+		height: 24px;
+		background: grey;
+		position: absolute;
+		left: 16px;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+	}
+
+	@media (max-width: 500px) {
+		& {
+			justify-content: center;
+		}
+		> .menu {
+			display: none;
+		}
+		> .toggleAside {
+			display: inline-block;
 		}
 	}
 }

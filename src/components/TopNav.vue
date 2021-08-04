@@ -1,6 +1,6 @@
 <template>
 	<div class="top-nav">
-		<div class="logo">
+		<div class="logo" @click="toggleMenu">
 			<img src="../assets/logo.png" alt="X-UI" /><span class="text">X-UI</span>
 		</div>
 		<ul class="menu">
@@ -9,6 +9,19 @@
 		</ul>
 	</div>
 </template>
+
+<script lang="ts">
+import { inject, Ref } from "vue";
+export default {
+	setup() {
+		const menuVisible = inject<Ref<boolean>>("menuVisible");
+		const toggleMenu = () => {
+			menuVisible.value = !menuVisible.value;
+		};
+		return { toggleMenu };
+	},
+};
+</script>
 
 <style lang="scss" scoped>
 .top-nav {
@@ -27,6 +40,7 @@
 		justify-content: center;
 		align-items: center;
 		margin-left: 32px;
+		cursor: pointer;
 		> img {
 			width: 40px;
 			height: 40px;

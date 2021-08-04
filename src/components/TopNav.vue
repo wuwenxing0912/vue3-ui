@@ -7,21 +7,11 @@
 			<li>菜单1</li>
 			<li>菜单2</li>
 		</ul>
-		<span class="toggleAside" @click="toggleMenu"></span>
 	</div>
 </template>
 
 <script lang="ts">
-import { inject, Ref } from "vue";
-export default {
-	setup() {
-		const menuVisible = inject<Ref<boolean>>("menuVisible");
-		const toggleMenu = () => {
-			menuVisible.value = !menuVisible.value;
-		};
-		return { toggleMenu };
-	},
-};
+export default {};
 </script>
 
 <style lang="scss" scoped>
@@ -59,28 +49,28 @@ export default {
 		}
 	}
 
-	> .toggleAside {
-		display: none;
-		width: 24px;
-		height: 24px;
-		background: grey;
-		position: absolute;
-		left: 16px;
-		top: 50%;
-		transform: translateY(-50%);
-		cursor: pointer;
-	}
+	// > .toggleAside {
+	// 	display: none;
+	// 	width: 24px;
+	// 	height: 24px;
+	// 	background: grey;
+	// 	position: absolute;
+	// 	left: 16px;
+	// 	top: 50%;
+	// 	transform: translateY(-50%);
+	// 	cursor: pointer;
+	// }
 
-	@media (max-width: 500px) {
-		& {
-			justify-content: center;
-		}
-		> .menu {
-			display: none;
-		}
-		> .toggleAside {
-			display: inline-block;
-		}
-	}
+	// @media (max-width: 500px) {
+	// 	& {
+	// 		justify-content: center;
+	// 	}
+	// 	> .menu {
+	// 		display: none;
+	// 	}
+	// 	> .toggleAside {
+	// 		display: inline-block;
+	// 	}
+	// }
 }
 </style>

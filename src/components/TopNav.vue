@@ -18,6 +18,8 @@
 	justify-content: space-between;
 	align-items: center;
 	font-size: 20px;
+	position: relative;
+	z-index: 10;
 	box-shadow: 0 2px 5px rgb(0 0 0 / 16%);
 
 	> .logo {

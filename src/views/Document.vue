@@ -2,7 +2,23 @@
 	<div>
 		<TopNav />
 		<div class="content">
-			<aside>导航栏</aside>
+			<aside>
+				<h2>组件</h2>
+				<ol>
+					<li>
+						<router-link to="/doc/switch">Switch 组件</router-link>
+					</li>
+					<li>
+						<router-link to="/doc/button">Button 组件</router-link>
+					</li>
+					<li>
+						<router-link to="/doc/dialog">Dialog 组件</router-link>
+					</li>
+					<li>
+						<router-link to="/doc/tabs">Tabs 组件</router-link>
+					</li>
+				</ol>
+			</aside>
 			<main>内容区域</main>
 		</div>
 	</div>
@@ -16,3 +32,26 @@ export default {
 	},
 };
 </script>
+
+<style lang="scss" scoped>
+aside {
+	width: 150px;
+	padding: 16px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding-top: 80px;
+	> h2 {
+		margin-bottom: 4px;
+	}
+	> ol {
+		> li {
+			padding: 4px 0;
+			margin-left: 8px;
+		}
+	}
+}
+main {
+	margin-left: 200px;
+}
+</style>

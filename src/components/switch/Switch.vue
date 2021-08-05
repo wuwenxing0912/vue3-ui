@@ -1,23 +1,24 @@
 <template>
 	<span
-		:class="{ 'x-switch': true, 'switch-checked': checked }"
+		:class="{ 'x-switch': true, 'switch-checked': value }"
 		@click="changeChecked"
 	>
 		<span
-			:class="{ 'x-switch-inner': true, 'x-switch-inner-checked': checked }"
+			:class="{ 'x-switch-inner': true, 'x-switch-inner-checked': value }"
 		></span>
 	</span>
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
 export default {
-	setup() {
-		const checked = ref(false);
+	props: {
+		value: Boolean,
+	},
+	setup(props, context) {
 		const changeChecked = () => {
-			checked.value = !checked.value;
+			context.emit("input", !props.value);
 		};
-		return { checked, changeChecked };
+		return { changeChecked };
 	},
 };
 </script>

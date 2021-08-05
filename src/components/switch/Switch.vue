@@ -16,7 +16,7 @@ export default {
 	},
 	setup(props, context) {
 		const changeChecked = () => {
-			context.emit("input", !props.value);
+			context.emit("update:value", !props.value);
 		};
 		return { changeChecked };
 	},

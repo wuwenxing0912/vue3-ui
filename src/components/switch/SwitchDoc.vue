@@ -16,16 +16,11 @@
 					<use xlink:href="#icon-code"></use>
 				</svg>
 			</span>
-			<span
-				class="pop-content"
-				:style="{ display: codeTipVisible ? 'inline-block' : 'none' }"
-			>
+			<span class="pop-content" v-if="codeTipVisible">
 				{{ codeVisible ? "收起代码" : "显示代码" }}
 			</span>
 		</div>
-		<div class="code-area" :style="{ display: codeVisible ? 'block' : 'none' }">
-			code
-		</div>
+		<div class="code-area" v-if="codeVisible">code</div>
 	</section>
 	<section>
 		<h1>API</h1>

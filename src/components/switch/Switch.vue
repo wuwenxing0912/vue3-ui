@@ -1,6 +1,6 @@
 <template>
 	<span
-		:class="{ 'x-switch': true, 'switch-checked': checked }"
+		:class="{ 'x-switch': true, 'switch-checked': checked, disabled: disabled }"
 		@click="changeChecked"
 	>
 		<span
@@ -16,9 +16,14 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+		disabled: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	setup(props, context) {
 		const changeChecked = () => {
+			if (props.disabled) return;
 			context.emit("update:checked", !props.checked);
 		};
 		return { changeChecked };

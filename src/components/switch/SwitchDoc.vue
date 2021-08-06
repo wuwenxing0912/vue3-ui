@@ -40,6 +40,12 @@
 					<td class="api-type">Boolean</td>
 					<td class="api-default">false</td>
 				</tr>
+				<tr>
+					<td class="api-style">disabled</td>
+					<td class="api-style-description">开关是否禁用</td>
+					<td class="api-type">Boolean</td>
+					<td class="api-default">false</td>
+				</tr>
 			</tbody>
 		</table>
 	</section>

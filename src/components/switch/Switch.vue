@@ -1,10 +1,10 @@
 <template>
 	<span
-		:class="{ 'x-switch': true, 'switch-checked': value }"
+		:class="{ 'x-switch': true, 'switch-checked': checked }"
 		@click="changeChecked"
 	>
 		<span
-			:class="{ 'x-switch-inner': true, 'x-switch-inner-checked': value }"
+			:class="{ 'x-switch-inner': true, 'x-switch-inner-checked': checked }"
 		></span>
 	</span>
 </template>
@@ -12,11 +12,14 @@
 <script lang="ts">
 export default {
 	props: {
-		value: Boolean,
+		checked: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	setup(props, context) {
 		const changeChecked = () => {
-			context.emit("update:value", !props.value);
+			context.emit("update:checked", !props.checked);
 		};
 		return { changeChecked };
 	},
@@ -24,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$main-color: #007aff;
+$main-color: #007aff; //#42b983
 .x-switch {
 	height: 22px;
 	width: 40px;

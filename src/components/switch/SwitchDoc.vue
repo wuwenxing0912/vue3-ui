@@ -6,34 +6,26 @@
 		</div>
 		<div class="description">
 			<span class="text">开关的基本用法</span>
-			<!-- <span
-					class="code-icon"
-					style={{ display: "inline-flex", cursor: "pointer" }}
-					onClick={() => {
-						setVisble(!visible);
-					}}
-					onMouseEnter={() => {
-						setshowCode(!showCode);
-					}}
-					onMouseLeave={() => {
-						setshowCode(!showCode);
-					}}
-				>
-					<Icon name="code" style={{ height: 19 }}></Icon>
-				</span> -->
-			<!-- <span
-					class="pop-content"
-					style={{ display: showCode ? "inline-block" : "none" }}
-				>
-					{visible ? "收起代码" : "显示代码"}
-				</span> -->
-		</div>
-		<!-- <div
-				class="code-area"
-				style={{ display: visible ? "block" : "none" }}
+			<span
+				class="code-icon"
+				@click="changeCodeVisible"
+				@mouseenter="changeCodeTipVisible"
+				@mouseleave="changeCodeTipVisible"
 			>
-				{createHighlightCode(code as string)}
-			</div> -->
+				<svg class="icon">
+					<use xlink:href="#icon-code"></use>
+				</svg>
+			</span>
+			<span
+				class="pop-content"
+				:style="{ display: codeTipVisible ? 'inline-block' : 'none' }"
+			>
+				{{ codeVisible ? "收起代码" : "显示代码" }}
+			</span>
+		</div>
+		<div class="code-area" :style="{ display: codeVisible ? 'block' : 'none' }">
+			code
+		</div>
 	</section>
 	<section>
 		<h1>API</h1>
@@ -66,8 +58,22 @@ export default {
 		Switch: Switch,
 	},
 	setup() {
+		const codeVisible = ref(false);
+		const changeCodeVisible = () => {
+			codeVisible.value = !codeVisible.value;
+		};
+		const codeTipVisible = ref(false);
+		const changeCodeTipVisible = () => {
+			codeTipVisible.value = !codeTipVisible.value;
+		};
 		const checked = ref(true);
-		return { checked };
+		return {
+			codeVisible,
+			changeCodeVisible,
+			codeTipVisible,
+			changeCodeTipVisible,
+			checked,
+		};
 	},
 };
 </script>

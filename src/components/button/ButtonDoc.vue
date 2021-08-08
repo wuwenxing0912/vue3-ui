@@ -14,7 +14,32 @@
           <th class="api-table-head">默认值</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+        <tr>
+          <td class="api">levle</td>
+          <td class="api-description">设置button的样式</td>
+          <td class="api-type">"default" | "primary" | "dashed" | "danger"</td>
+          <td class="api-default">default</td>
+        </tr>
+        <tr>
+          <td class="api">size</td>
+          <td class="api-description">按钮尺寸大小</td>
+          <td class="api-type">"large" | "middle" | "small"</td>
+          <td class="api-default">middle</td>
+        </tr>
+        <tr>
+          <td class="api">disabled</td>
+          <td class="api-description">按钮禁用状态</td>
+          <td class="api-type">Boolean</td>
+          <td class="api-default">false</td>
+        </tr>
+        <tr>
+          <td class="api">loading</td>
+          <td class="api-description">按钮加载中状态</td>
+          <td class="api-type">Boolean</td>
+          <td class="api-default">false</td>
+        </tr>
+      </tbody>
     </table>
   </section>
 </template>

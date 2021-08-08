@@ -1,8 +1,22 @@
 <template>
-	<button class="x-button">
+	<button class="x-button" :class="levle">
 		<slot></slot>
 	</button>
 </template>
+
+<script lang="ts">
+export default {
+	props: {
+		levle: {
+			validator(value: string) {
+				return ["default", "primary", "dashed", "danger"].includes(value);
+			},
+			default: "default",
+		},
+	},
+	setup() {},
+};
+</script>
 
 <style lang="scss" scoped>
 $main-color: #007aff; //#42b983

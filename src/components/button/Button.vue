@@ -1,5 +1,6 @@
 <template>
 	<button class="x-button" :class="[levle, size]" :disabled="disabled">
+		<span v-if="loading" class="x-loading"></span>
 		<slot></slot>
 	</button>
 </template>
@@ -20,6 +21,10 @@ export default {
 			default: "middle",
 		},
 		disabled: {
+			type: Boolean,
+			default: false,
+		},
+		loading: {
 			type: Boolean,
 			default: false,
 		},
@@ -141,6 +146,31 @@ $main-color: #007aff; //#42b983
 		line-height: 24px;
 		font-size: 12px;
 		padding: 2px 14px;
+	}
+	& .x-loading {
+		width: 14px;
+		height: 14px;
+		display: inline-block;
+		margin-right: 4px;
+		border-radius: 8px;
+		border-color: #8c8c8c #8c8c8c transparent transparent;
+		border-style: solid;
+		border-width: 2px;
+		animation: loading 1s infinite linear;
+	}
+	&.primary .x-loading {
+		border-color: #fff #fff transparent transparent;
+	}
+	&.danger .x-loading {
+		border-color: #fff #fff transparent transparent;
+	}
+	@keyframes loading {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
 	}
 }
 </style>

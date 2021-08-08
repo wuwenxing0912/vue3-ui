@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<Button :levle="levle" :size="size" disabled>按钮</Button>
+		<Button :levle="levle" loading>按钮</Button>
 	</div>
 </template>
 

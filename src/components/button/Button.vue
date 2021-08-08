@@ -1,176 +1,176 @@
 <template>
-	<button class="x-button" :class="[levle, size]" :disabled="disabled">
-		<span v-if="loading" class="x-loading"></span>
-		<slot></slot>
-	</button>
+  <button class="x-button" :class="[levle, size]" :disabled="disabled">
+    <span v-if="loading" class="x-loading"></span>
+    <slot />
+  </button>
 </template>
 
 <script lang="ts">
 export default {
-	props: {
-		levle: {
-			validator(value: string) {
-				return ["default", "primary", "dashed", "danger"].includes(value);
-			},
-			default: "default",
-		},
-		size: {
-			validator(value: string) {
-				return ["large", "middle", "small"].includes(value);
-			},
-			default: "middle",
-		},
-		disabled: {
-			type: Boolean,
-			default: false,
-		},
-		loading: {
-			type: Boolean,
-			default: false,
-		},
-	},
-	setup() {},
+  props: {
+    levle: {
+      validator(value: string) {
+        return ["default", "primary", "dashed", "danger"].includes(value);
+      },
+      default: "default",
+    },
+    size: {
+      validator(value: string) {
+        return ["large", "middle", "small"].includes(value);
+      },
+      default: "middle",
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  setup() {},
 };
 </script>
 
 <style lang="scss" scoped>
 $main-color: #007aff; //#42b983
 .x-button {
-	font-size: 16px;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	background: #fff;
-	border: 1px solid;
-	border-radius: 4px;
-	border-color: rgba(0, 0, 0, 0.15);
-	transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-	white-space: nowrap;
-	&.default:hover {
-		border-color: $main-color;
-		color: $main-color;
-		fill: $main-color;
-	}
-	&.primary {
-		background-color: $main-color;
-		color: #fff;
-		fill: #fff;
-	}
-	&.primary:hover {
-		border-color: rgba($main-color, 0.85);
-		background-color: rgba($main-color, 0.85);
-	}
-	&.dashed {
-		border-style: dashed;
-	}
-	&.dashed:hover {
-		border-color: $main-color;
-		color: $main-color;
-		fill: $main-color;
-	}
-	&.danger {
-		background-color: red;
-		color: #fff;
-		fill: #fff;
-	}
-	&.danger:hover {
-		border-color: rgba(red, 0.75);
-		background-color: rgba(red, 0.75);
-	}
-	&[disabled],
-	&[disabled]:hover {
-		cursor: not-allowed;
-		color: #00000040;
-		background: #f5f5f5;
-		border-color: #d9d9d9;
-		fill: #00000040;
-	}
-	& .icon {
-		height: 16px;
-		width: 16px;
-	}
-	&.default.ghost {
-		color: #fff;
-		border-color: #fff;
-		fill: #fff;
-		background-color: transparent;
-	}
-	&.default.ghost:hover {
-		border-color: $main-color;
-		color: $main-color;
-		fill: $main-color;
-	}
-	&.primary.ghost {
-		background-color: transparent;
-		color: $main-color;
-		fill: $main-color;
-		border-color: $main-color;
-	}
-	&.primary.ghost:hover {
-		border-color: rgba($main-color, 0.75);
-		color: rgba($main-color, 0.75);
-		fill: rgba($main-color, 0.75);
-	}
-	&.dashed.ghost {
-		color: #fff;
-		border-color: #fff;
-		fill: #fff;
-		background-color: transparent;
-	}
-	&.dashed.ghost:hover {
-		border-color: $main-color;
-		color: $main-color;
-		fill: $main-color;
-	}
-	&.danger.ghost {
-		background-color: transparent;
-		color: rgba(red, 0.75);
-		fill: rgba(red, 0.75);
-		border-color: rgba(red, 0.75);
-	}
-	&.danger.ghost:hover {
-		border-color: rgba(red, 0.6);
-		color: rgba(red, 0.6);
-		fill: rgba(red, 0.6);
-	}
-	&.large {
-		line-height: 28px;
-		padding: 6px 18px;
-	}
-	&.middle {
-		line-height: 26px;
-		padding: 4px 16px;
-	}
-	&.small {
-		line-height: 24px;
-		font-size: 12px;
-		padding: 2px 14px;
-	}
-	& .x-loading {
-		width: 14px;
-		height: 14px;
-		display: inline-block;
-		margin-right: 4px;
-		border-radius: 8px;
-		border-color: #8c8c8c #8c8c8c transparent transparent;
-		border-style: solid;
-		border-width: 2px;
-		animation: loading 1s infinite linear;
-	}
-	&.primary .x-loading {
-		border-color: #fff #fff transparent transparent;
-	}
-	&.danger .x-loading {
-		border-color: #fff #fff transparent transparent;
-	}
-	@keyframes loading {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	}
+  font-size: 16px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color: rgba(0, 0, 0, 0.15);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  white-space: nowrap;
+  &.default:hover {
+    border-color: $main-color;
+    color: $main-color;
+    fill: $main-color;
+  }
+  &.primary {
+    background-color: $main-color;
+    color: #fff;
+    fill: #fff;
+  }
+  &.primary:hover {
+    border-color: rgba($main-color, 0.85);
+    background-color: rgba($main-color, 0.85);
+  }
+  &.dashed {
+    border-style: dashed;
+  }
+  &.dashed:hover {
+    border-color: $main-color;
+    color: $main-color;
+    fill: $main-color;
+  }
+  &.danger {
+    background-color: red;
+    color: #fff;
+    fill: #fff;
+  }
+  &.danger:hover {
+    border-color: rgba(red, 0.75);
+    background-color: rgba(red, 0.75);
+  }
+  &[disabled],
+  &[disabled]:hover {
+    cursor: not-allowed;
+    color: #00000040;
+    background: #f5f5f5;
+    border-color: #d9d9d9;
+    fill: #00000040;
+  }
+  & .icon {
+    height: 16px;
+    width: 16px;
+  }
+  &.default.ghost {
+    color: #fff;
+    border-color: #fff;
+    fill: #fff;
+    background-color: transparent;
+  }
+  &.default.ghost:hover {
+    border-color: $main-color;
+    color: $main-color;
+    fill: $main-color;
+  }
+  &.primary.ghost {
+    background-color: transparent;
+    color: $main-color;
+    fill: $main-color;
+    border-color: $main-color;
+  }
+  &.primary.ghost:hover {
+    border-color: rgba($main-color, 0.75);
+    color: rgba($main-color, 0.75);
+    fill: rgba($main-color, 0.75);
+  }
+  &.dashed.ghost {
+    color: #fff;
+    border-color: #fff;
+    fill: #fff;
+    background-color: transparent;
+  }
+  &.dashed.ghost:hover {
+    border-color: $main-color;
+    color: $main-color;
+    fill: $main-color;
+  }
+  &.danger.ghost {
+    background-color: transparent;
+    color: rgba(red, 0.75);
+    fill: rgba(red, 0.75);
+    border-color: rgba(red, 0.75);
+  }
+  &.danger.ghost:hover {
+    border-color: rgba(red, 0.6);
+    color: rgba(red, 0.6);
+    fill: rgba(red, 0.6);
+  }
+  &.large {
+    line-height: 28px;
+    padding: 6px 18px;
+  }
+  &.middle {
+    line-height: 26px;
+    padding: 4px 16px;
+  }
+  &.small {
+    line-height: 24px;
+    font-size: 12px;
+    padding: 2px 14px;
+  }
+  & .x-loading {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 8px;
+    border-color: #8c8c8c #8c8c8c transparent transparent;
+    border-style: solid;
+    border-width: 2px;
+    animation: loading 1s infinite linear;
+  }
+  &.primary .x-loading {
+    border-color: #fff #fff transparent transparent;
+  }
+  &.danger .x-loading {
+    border-color: #fff #fff transparent transparent;
+  }
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
 </style>

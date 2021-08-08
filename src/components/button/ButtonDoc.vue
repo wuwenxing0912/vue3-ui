@@ -1,19 +1,71 @@
 <template>
-	<div>
-		<Button :levle="levle" :size="size" disabled>按钮</Button>
-		<Button :levle="levle" loading>按钮</Button>
-	</div>
+	<section>
+		<h1>组件和代码示例</h1>
+		<div class="example-container">
+			<Button :levle="levle" :size="size">按钮</Button>
+		</div>
+		<div class="description">
+			<span class="text">开关的基本用法</span>
+			<span
+				class="code-icon"
+				@click="changeCodeVisible"
+				@mouseenter="changeCodeTipVisible"
+				@mouseleave="changeCodeTipVisible"
+			>
+				<svg class="icon">
+					<use xlink:href="#icon-code"></use>
+				</svg>
+			</span>
+			<span class="pop-content" v-if="codeTipVisible">
+				{{ codeVisible ? "收起代码" : "显示代码" }}
+			</span>
+		</div>
+		<div class="code-area" v-if="codeVisible">code</div>
+	</section>
+	<section>
+		<h1>API</h1>
+		<table class="api-table" cellSpacing="0" cellPadding="0">
+			<thead>
+				<tr>
+					<th class="api-table-head">API</th>
+					<th class="api-table-head">说明</th>
+					<th class="api-table-head">类型</th>
+					<th class="api-table-head">默认值</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</section>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { ref } from "vue";
 import Button from "./Button.vue";
 export default {
 	components: { Button: Button },
 	setup() {
+		const codeVisible = ref(false);
+		const changeCodeVisible = () => {
+			codeVisible.value = !codeVisible.value;
+		};
+		const codeTipVisible = ref(false);
+		const changeCodeTipVisible = () => {
+			codeTipVisible.value = !codeTipVisible.value;
+		};
 		const levle = "primary";
 		const size = "middle";
-		return { levle, size };
+		return {
+			codeVisible,
+			changeCodeVisible,
+			codeTipVisible,
+			changeCodeTipVisible,
+			levle,
+			size,
+		};
 	},
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../../style/example.scss";
+</style>

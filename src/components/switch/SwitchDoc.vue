@@ -1,5 +1,6 @@
 <template>
   <SwitchDefault />
+  <SwitchDisabled />
   <section>
     <h1>API</h1>
     <table class="api-table" cellSpacing="0" cellPadding="0">
@@ -31,10 +32,12 @@
 
 <script lang="ts">
 import SwitchDefault from "./example/SwitchDefault.vue";
+import SwitchDisabled from "./example/SwitchDisabled.vue";
 import { ref } from "vue";
 export default {
   components: {
     SwitchDefault,
+    SwitchDisabled,
   },
   setup() {
     const codeVisible = ref(false);

@@ -1,5 +1,5 @@
 <template>
-	<button class="x-button" :class="[levle, size]">
+	<button class="x-button" :class="[levle, size]" :disabled="disabled">
 		<slot></slot>
 	</button>
 </template>
@@ -18,6 +18,10 @@ export default {
 				return ["large", "middle", "small"].includes(value);
 			},
 			default: "middle",
+		},
+		disabled: {
+			type: Boolean,
+			default: false,
 		},
 	},
 	setup() {},
@@ -69,8 +73,8 @@ $main-color: #007aff; //#42b983
 		border-color: rgba(red, 0.75);
 		background-color: rgba(red, 0.75);
 	}
-	&.disabled,
-	&.disabled:hover {
+	&[disabled],
+	&[disabled]:hover {
 		cursor: not-allowed;
 		color: #00000040;
 		background: #f5f5f5;

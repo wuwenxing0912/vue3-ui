@@ -155,7 +155,7 @@ $main-color: #007aff; //#42b983
     border-radius: 8px;
     border-color: #8c8c8c #8c8c8c transparent transparent;
     border-style: solid;
-    border-width: 2px;
+    border-width: 1.5px;
     animation: loading 1s infinite linear;
   }
   &.primary .x-loading {

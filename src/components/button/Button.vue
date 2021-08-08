@@ -1,5 +1,5 @@
 <template>
-	<button class="x-button" :class="levle">
+	<button class="x-button" :class="[levle, size]">
 		<slot></slot>
 	</button>
 </template>
@@ -13,6 +13,12 @@ export default {
 			},
 			default: "default",
 		},
+		size: {
+			validator(value: string) {
+				return ["large", "middle", "small"].includes(value);
+			},
+			default: "middle",
+		},
 	},
 	setup() {},
 };
@@ -22,8 +28,6 @@ export default {
 $main-color: #007aff; //#42b983
 .x-button {
 	font-size: 16px;
-	line-height: 26px;
-	padding: 4px 16px;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -124,6 +128,10 @@ $main-color: #007aff; //#42b983
 	&.large {
 		line-height: 28px;
 		padding: 6px 18px;
+	}
+	&.middle {
+		line-height: 26px;
+		padding: 4px 16px;
 	}
 	&.small {
 		line-height: 24px;

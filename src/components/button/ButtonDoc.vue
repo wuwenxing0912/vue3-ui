@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Button :levle="levle">按钮</Button>
+		<Button :levle="levle" :size="size">按钮</Button>
 	</div>
 </template>
 
@@ -11,7 +11,8 @@ export default {
 	components: { Button: Button },
 	setup() {
 		const levle = "primary";
-		return { levle };
+		const size = "middle";
+		return { levle, size };
 	},
 };
 </script>

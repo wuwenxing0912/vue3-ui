@@ -20,7 +20,9 @@
         >
           cancelText
         </Button>
-        <Button levle="primary" @click="onConfirm"> confirmText </Button>
+        <Button levle="primary" :size="confirmButtonSize" @click="onConfirm">
+          confirmText
+        </Button>
       </footer>
     </div>
   </template>
@@ -37,6 +39,12 @@ export default {
     },
     onConfirm: {
       type: Function,
+    },
+    confirmButtonSize: {
+      validator(value: string) {
+        return ["large", "middle", "small"].includes(value);
+      },
+      default: "middle",
     },
     onClose: {
       type: Function,

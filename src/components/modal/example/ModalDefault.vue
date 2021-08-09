@@ -9,6 +9,11 @@
         :onConfirm="changeModalVisible"
       >
         <template v-slot:title>对话框</template>
+        <template v-slot:content>
+          <div>more content...</div>
+          <div>more content...</div>
+          <div>more content...</div>
+        </template>
       </Modal>
     </div>
     <div class="description">

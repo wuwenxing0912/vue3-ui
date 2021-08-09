@@ -12,7 +12,9 @@
           </svg>
         </div>
       </header>
-      <main class="x-modal-main">content</main>
+      <main class="x-modal-main">
+        <slot name="content">内容区域</slot>
+      </main>
       <footer class="x-modal-footer">
         <Button
           :levle="cancelButtonLevle"

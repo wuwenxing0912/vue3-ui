@@ -14,6 +14,7 @@
           <div>more content...</div>
           <div>more content...</div>
         </template>
+        <template v-slot:cancel>取消</template>
       </Modal>
     </div>
     <div class="description">

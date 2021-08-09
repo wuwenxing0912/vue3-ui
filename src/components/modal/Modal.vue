@@ -22,7 +22,7 @@
           class="x-modal-footer-button"
           @click="onClose"
         >
-          cancelText
+          <slot name="cancel">cancel</slot>
         </Button>
         <Button :levle="confirmButtonLevle" :size="confirmButtonSize" @click="onConfirm">
           confirmText

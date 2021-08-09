@@ -1,5 +1,5 @@
 <template>
-  <template v-if="true">
+  <template v-if="visible">
     <div class="x-modal-mask" onClick="{onClickMaskClose}"></div>
     <div class="x-modal">
       <header class="x-modal-header">
@@ -29,6 +29,12 @@
 import Button from "../button/Button.vue";
 export default {
   components: { Button },
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 

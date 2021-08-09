@@ -1,8 +1,8 @@
 <template>
   <section>
     <div class="example-container">
-      <Button levle="primary"> open Modal </Button>
-      <Modal />
+      <Button levle="primary" @click="changeModalVisible"> open Modal </Button>
+      <Modal :visible="modalVisible" />
     </div>
     <div class="description">
       <span class="text">对话框的基本用法。</span>
@@ -39,11 +39,17 @@ export default {
     const changeCodeTipVisible = () => {
       codeTipVisible.value = !codeTipVisible.value;
     };
+    const modalVisible = ref(false);
+    const changeModalVisible = () => {
+      modalVisible.value = !modalVisible.value;
+    };
     return {
       codeVisible,
       changeCodeVisible,
       codeTipVisible,
       changeCodeTipVisible,
+      modalVisible,
+      changeModalVisible,
     };
   },
 };

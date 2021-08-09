@@ -5,7 +5,9 @@
       <header class="x-modal-header">
         <div class="x-modal-header-content">title</div>
         <div class="x-modal-icon-wrapper" onClick="{props.onClose}">
-          <!-- <Icon name="close" class="x-modal-icon"></Icon> -->
+          <svg class="icon x-modal-icon">
+            <use xlink:href="#icon-close"></use>
+          </svg>
         </div>
       </header>
       <main class="x-modal-main">content</main>
@@ -33,7 +35,7 @@ export default {
 <style lang="scss" scoped>
 .x-modal {
   position: fixed;
-  top: 30%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   min-width: 400px;

@@ -4,7 +4,7 @@
     <div class="x-modal">
       <header class="x-modal-header">
         <div class="x-modal-header-content">title</div>
-        <div class="x-modal-icon-wrapper" onClick="{props.onClose}">
+        <div class="x-modal-icon-wrapper" @click="iconClose">
           <svg class="icon x-modal-icon">
             <use xlink:href="#icon-close"></use>
           </svg>
@@ -50,7 +50,7 @@ export default {
       validator(value: string) {
         return ["default", "primary", "dashed", "danger"].includes(value);
       },
-      default: "default",
+      default: "primary",
     },
     onClose: {
       type: Function,
@@ -67,6 +67,12 @@ export default {
       },
       default: "default",
     },
+  },
+  setup(props, context) {
+    const iconClose = () => {
+      context.emit("update:visible", false);
+    };
+    return { iconClose };
   },
 };
 </script>

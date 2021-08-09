@@ -4,6 +4,7 @@
       <Button levle="primary" @click="changeModalVisible"> open Modal </Button>
       <Modal
         :visible="modalVisible"
+        @update:visible="modalVisible = $event"
         :onClose="changeModalVisible"
         :onConfirm="changeModalVisible"
       />

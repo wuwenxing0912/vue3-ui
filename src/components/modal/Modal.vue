@@ -3,7 +3,9 @@
     <div class="x-modal-mask" onClick="{onClickMaskClose}"></div>
     <div class="x-modal">
       <header class="x-modal-header">
-        <div class="x-modal-header-content">title</div>
+        <div class="x-modal-header-content">
+          <slot name="title">标题</slot>
+        </div>
         <div class="x-modal-icon-wrapper" @click="iconClose">
           <svg class="icon x-modal-icon">
             <use xlink:href="#icon-close"></use>

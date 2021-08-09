@@ -7,7 +7,9 @@
         @update:visible="modalVisible = $event"
         :onClose="changeModalVisible"
         :onConfirm="changeModalVisible"
-      />
+      >
+        <template v-slot:title>对话框</template>
+      </Modal>
     </div>
     <div class="description">
       <span class="text">对话框的基本用法。</span>

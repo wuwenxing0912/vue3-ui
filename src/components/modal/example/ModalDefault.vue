@@ -15,6 +15,7 @@
           <div>more content...</div>
         </template>
         <template v-slot:cancel>取消</template>
+        <template v-slot:confirm>确定</template>
       </Modal>
     </div>
     <div class="description">

@@ -25,7 +25,7 @@
           <slot name="cancel">cancel</slot>
         </Button>
         <Button :levle="confirmButtonLevle" :size="confirmButtonSize" @click="onConfirm">
-          confirmText
+          <slot name="confirm">confirm</slot>
         </Button>
       </footer>
     </div>

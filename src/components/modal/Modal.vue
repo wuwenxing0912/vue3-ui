@@ -20,7 +20,7 @@
         >
           cancelText
         </Button>
-        <Button levle="primary" :size="confirmButtonSize" @click="onConfirm">
+        <Button :levle="confirmButtonLevle" :size="confirmButtonSize" @click="onConfirm">
           confirmText
         </Button>
       </footer>
@@ -45,6 +45,12 @@ export default {
         return ["large", "middle", "small"].includes(value);
       },
       default: "middle",
+    },
+    confirmButtonLevle: {
+      validator(value: string) {
+        return ["default", "primary", "dashed", "danger"].includes(value);
+      },
+      default: "default",
     },
     onClose: {
       type: Function,

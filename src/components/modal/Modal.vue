@@ -13,7 +13,8 @@
       <main class="x-modal-main">content</main>
       <footer class="x-modal-footer">
         <Button
-          :levle="cancelButtonType"
+          :levle="cancelButtonLevle"
+          :size="cancelButtonSize"
           class="x-modal-footer-button"
           onClick="{props.onClose}"
         >
@@ -34,7 +35,13 @@ export default {
       type: Boolean,
       default: false,
     },
-    cancelButtonType: {
+    cancelButtonSize: {
+      validator(value: string) {
+        return ["large", "middle", "small"].includes(value);
+      },
+      default: "middle",
+    },
+    cancelButtonLevle: {
       validator(value: string) {
         return ["default", "primary", "dashed", "danger"].includes(value);
       },

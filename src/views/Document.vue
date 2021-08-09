@@ -71,7 +71,7 @@ $main-color: #42b983;
         min-width: 12em;
         margin-left: 12px;
         > li > a {
-          font-size: 15px;
+          font-size: 14px;
           height: 40px;
           padding: 4px 16px 4px 30px;
           display: flex;

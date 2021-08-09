@@ -16,7 +16,7 @@
           :levle="cancelButtonLevle"
           :size="cancelButtonSize"
           class="x-modal-footer-button"
-          onClick="{props.onClose}"
+          @click="onClose"
         >
           cancelText
         </Button>
@@ -34,6 +34,9 @@ export default {
     visible: {
       type: Boolean,
       default: false,
+    },
+    onClose: {
+      type: Function,
     },
     cancelButtonSize: {
       validator(value: string) {

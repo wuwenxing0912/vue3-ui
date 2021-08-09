@@ -2,7 +2,7 @@
   <section>
     <div class="example-container">
       <Button levle="primary" @click="changeModalVisible"> open Modal </Button>
-      <Modal :visible="modalVisible" />
+      <Modal :visible="modalVisible" :onClose="changeModalVisible" />
     </div>
     <div class="description">
       <span class="text">对话框的基本用法。</span>

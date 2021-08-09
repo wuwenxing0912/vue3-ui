@@ -1,34 +1,40 @@
 <template>
   <template v-if="visible">
-    <div class="x-modal-mask" @click="onMaskClose"></div>
-    <div class="x-modal">
-      <header class="x-modal-header">
-        <div class="x-modal-header-content">
-          <slot name="title">标题</slot>
-        </div>
-        <div class="x-modal-icon-wrapper" @click="iconClose">
-          <svg class="icon x-modal-icon">
-            <use xlink:href="#icon-close"></use>
-          </svg>
-        </div>
-      </header>
-      <main class="x-modal-main">
-        <slot name="content">内容区域</slot>
-      </main>
-      <footer class="x-modal-footer">
-        <Button
-          :levle="cancelButtonLevle"
-          :size="cancelButtonSize"
-          class="x-modal-footer-button"
-          @click="onClose"
-        >
-          <slot name="cancel">cancel</slot>
-        </Button>
-        <Button :levle="confirmButtonLevle" :size="confirmButtonSize" @click="onConfirm">
-          <slot name="confirm">confirm</slot>
-        </Button>
-      </footer>
-    </div>
+    <teleport to="body">
+      <div class="x-modal-mask" @click="onMaskClose"></div>
+      <div class="x-modal">
+        <header class="x-modal-header">
+          <div class="x-modal-header-content">
+            <slot name="title">标题</slot>
+          </div>
+          <div class="x-modal-icon-wrapper" @click="iconClose">
+            <svg class="icon x-modal-icon">
+              <use xlink:href="#icon-close"></use>
+            </svg>
+          </div>
+        </header>
+        <main class="x-modal-main">
+          <slot name="content">内容区域</slot>
+        </main>
+        <footer class="x-modal-footer">
+          <Button
+            :levle="cancelButtonLevle"
+            :size="cancelButtonSize"
+            class="x-modal-footer-button"
+            @click="onClose"
+          >
+            <slot name="cancel">cancel</slot>
+          </Button>
+          <Button
+            :levle="confirmButtonLevle"
+            :size="confirmButtonSize"
+            @click="onConfirm"
+          >
+            <slot name="confirm">confirm</slot>
+          </Button>
+        </footer>
+      </div>
+    </teleport>
   </template>
 </template>
 

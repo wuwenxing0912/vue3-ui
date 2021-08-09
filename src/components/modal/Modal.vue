@@ -1,6 +1,6 @@
 <template>
   <template v-if="visible">
-    <div class="x-modal-mask" onClick="{onClickMaskClose}"></div>
+    <div class="x-modal-mask" @click="onMaskClose"></div>
     <div class="x-modal">
       <header class="x-modal-header">
         <div class="x-modal-header-content">
@@ -41,6 +41,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    onClickMaskClose: {
+      type: Boolean,
+      default: false,
+    },
     onConfirm: {
       type: Function,
     },
@@ -76,7 +80,12 @@ export default {
     const iconClose = () => {
       context.emit("update:visible", false);
     };
-    return { iconClose };
+    const onMaskClose = () => {
+      if (props.onClickMaskClose) {
+        iconClose();
+      }
+    };
+    return { iconClose, onMaskClose };
   },
 };
 </script>

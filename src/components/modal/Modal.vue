@@ -20,7 +20,7 @@
         >
           cancelText
         </Button>
-        <Button levle="primary" onClick="{props.onConfirm}"> confirmText </Button>
+        <Button levle="primary" @click="onConfirm"> confirmText </Button>
       </footer>
     </div>
   </template>
@@ -34,6 +34,9 @@ export default {
     visible: {
       type: Boolean,
       default: false,
+    },
+    onConfirm: {
+      type: Function,
     },
     onClose: {
       type: Function,

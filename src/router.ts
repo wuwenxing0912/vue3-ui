@@ -4,7 +4,7 @@ import Document from "./views/Document.vue";
 import SwitchDoc from "./components/switch/SwitchDoc.vue";
 import ButtonDoc from "./components/button/ButtonDoc.vue";
 import ModalDoc from "./components/modal/ModalDoc.vue";
-import Tabs from "./components/Tabs.vue";
+import Tabs from "./components/Tabs/TabsDoc.vue";
 
 const history = createWebHashHistory();
 export const router = createRouter({

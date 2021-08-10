@@ -8,18 +8,18 @@ import Tabs from "./components/Tabs.vue";
 
 const history = createWebHashHistory();
 export const router = createRouter({
-	history: history,
-	routes: [
-		{ path: "/", component: Home },
-		{
-			path: "/document",
-			component: Document,
-			children: [
-				{ path: "switch", component: SwitchDoc },
-				{ path: "button", component: ButtonDoc },
-				{ path: "modal", component: ModalDoc },
-				{ path: "tabs", component: Tabs },
-			],
-		},
-	],
+  history: history,
+  routes: [
+    { path: "/", component: Home },
+    {
+      path: "/document",
+      component: Document,
+      children: [
+        { path: "switch", component: SwitchDoc },
+        { path: "button", component: ButtonDoc },
+        { path: "modal", component: ModalDoc },
+        { path: "tabs", component: Tabs },
+      ],
+    },
+  ],
 });

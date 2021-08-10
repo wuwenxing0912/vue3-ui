@@ -3,7 +3,8 @@
     <h1>组件和代码示例</h1>
     <div class="example-container">
       <Tabs>
-        <Tab></Tab>
+        <Tab title="导航一">Tab1</Tab>
+        <Tab title="导航二">Tab2</Tab>
       </Tabs>
     </div>
     <div class="description">

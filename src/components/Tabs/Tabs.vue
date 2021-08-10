@@ -1,24 +1,31 @@
 <template>
   <div class="x-tabs">
     <div class="x-tabs-nav">
-      <div class="x-tabs-nav-item" v-for="(title, index) in titles" :key="index">
+      <div
+        class="x-tabs-nav-item"
+        v-for="(title, index) in titles"
+        :key="index"
+        :class="{ selected: title === selected }"
+        @click="selectTitle(title)"
+      >
         {{ title }}
       </div>
     </div>
     <div class="x-tabs-content">
-      <component
-        class="x-tabs-content-item"
-        v-for="(child, index) in children"
-        :is="child"
-        :key="index"
-      />
+      <component class="x-tabs-content-item" :is="currentContent" :key="selected" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import Tab from "./Tab.vue";
+import { computed } from "vue";
 export default {
+  props: {
+    selected: {
+      type: String,
+    },
+  },
   setup(props, context) {
     const children = context.slots.default();
     children.forEach((child) => {
@@ -29,7 +36,15 @@ export default {
     const titles = children.map((child) => {
       return child.props.title;
     });
-    return { children, titles };
+    const selectTitle = (title: string) => {
+      context.emit("updated:selected", title);
+    };
+    const currentContent = computed(() => {
+      return children.filter((child) => {
+        return child.props.title === props.selected;
+      })[0];
+    });
+    return { children, titles, selectTitle, currentContent };
   },
 };
 </script>

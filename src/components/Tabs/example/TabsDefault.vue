@@ -2,7 +2,7 @@
   <section>
     <h1>组件和代码示例</h1>
     <div class="example-container">
-      <Tabs>
+      <Tabs :selected="selected" @updated:selected="selected = $event">
         <Tab title="导航一">Tab1</Tab>
         <Tab title="导航二">Tab2</Tab>
       </Tabs>
@@ -42,11 +42,13 @@ export default {
     const changeCodeTipVisible = () => {
       codeTipVisible.value = !codeTipVisible.value;
     };
+    const selected = ref("导航一");
     return {
       codeVisible,
       changeCodeVisible,
       codeTipVisible,
       changeCodeTipVisible,
+      selected,
     };
   },
 };

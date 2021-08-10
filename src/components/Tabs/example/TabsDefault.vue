@@ -2,13 +2,17 @@
   <section>
     <h1>组件和代码示例</h1>
     <div class="example-container">
-      <Tabs :selected="selected" @updated:selected="selected = $event">
+      <Tabs
+        :selected="selected"
+        @updated:selected="selected = $event"
+        style="width: 100%"
+      >
         <Tab title="导航一">Tab1</Tab>
         <Tab title="导航二">Tab2</Tab>
       </Tabs>
     </div>
     <div class="description">
-      <span class="text">对话框的基本用法。</span>
+      <span class="text">标签页的基本用法。</span>
       <span
         class="code-icon"
         @click="changeCodeVisible"

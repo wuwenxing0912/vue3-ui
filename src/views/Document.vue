@@ -6,16 +6,16 @@
         <h2>组件</h2>
         <ol>
           <li>
-            <router-link to="/document/switch">Switch 开关</router-link>
+            <router-link to="/components/button">Button 按钮</router-link>
           </li>
           <li>
-            <router-link to="/document/button">Button 按钮</router-link>
+            <router-link to="/components/modal">Modal 对话框</router-link>
           </li>
           <li>
-            <router-link to="/document/modal">Modal 对话框</router-link>
+            <router-link to="/components/tabs">Tabs 标签页</router-link>
           </li>
           <li>
-            <router-link to="/document/tabs">Tabs 标签页</router-link>
+            <router-link to="/components/switch">Switch 开关</router-link>
           </li>
         </ol>
       </aside>

@@ -27,7 +27,12 @@
         {{ codeVisible ? "收起代码" : "显示代码" }}
       </span>
     </div>
-    <div class="code-area" v-if="codeVisible">code</div>
+    <div class="code-area" v-if="codeVisible">
+      <pre
+        class="language-html"
+        v-html="Prism.highlight(code, Prism.languages.html, 'html')"
+      ></pre>
+    </div>
   </section>
 </template>
 
@@ -35,10 +40,13 @@
 import { ref } from "vue";
 import Tabs from "../Tabs.vue";
 import Tab from "../Tab.vue";
+import "prismjs";
+import "prismjs/themes/prism-okaidia.css";
+const Prism = window.Prism;
 export default {
   components: { Tabs, Tab },
   setup() {
-    const codeVisible = ref(false);
+    const codeVisible = ref(true);
     const changeCodeVisible = () => {
       codeVisible.value = !codeVisible.value;
     };
@@ -47,12 +55,34 @@ export default {
       codeTipVisible.value = !codeTipVisible.value;
     };
     const selected = ref("导航一");
+    const code =
+      `<template>
+  <Tabs :selected="selected" @updated:selected="selected = $event">
+    <Tab title="导航一">Tab1</Tab>
+    <Tab title="导航二">Tab2</Tab>
+  </Tabs>
+</template>
+    
+<script>
+import { ref } from "vue";
+import Tabs from "../Tabs.vue";
+import Tab from "../Tab.vue";
+export default {
+  components: { Tabs, Tab },
+  setup() {
+    const selected = ref("导航一");
+    return { selected };
+  }
+}
+<` + "/script>";
     return {
       codeVisible,
       changeCodeVisible,
       codeTipVisible,
       changeCodeTipVisible,
       selected,
+      Prism,
+      code,
     };
   },
 };

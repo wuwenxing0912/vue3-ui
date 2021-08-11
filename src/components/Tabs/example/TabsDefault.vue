@@ -46,7 +46,7 @@ const Prism = window.Prism;
 export default {
   components: { Tabs, Tab },
   setup() {
-    const codeVisible = ref(true);
+    const codeVisible = ref(false);
     const changeCodeVisible = () => {
       codeVisible.value = !codeVisible.value;
     };

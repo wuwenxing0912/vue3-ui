@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$main-color: #42b983;
+$main-color: #007aff; //#42b983
 .document {
   min-height: 100vh;
   display: flex;

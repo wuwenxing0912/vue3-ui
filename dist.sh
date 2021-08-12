@@ -2,8 +2,7 @@
 
 yarn build
 git checkout x-ui-home
-cd dist/
-mv -f * ../
+mv -f dist/* ./
 git add .
 git commit -m "update"
 git push

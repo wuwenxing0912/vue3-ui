@@ -2,11 +2,7 @@
   <section>
     <h1>组件和代码示例</h1>
     <div class="example-container">
-      <Tabs
-        :selected="selected"
-        @updated:selected="selected = $event"
-        style="width: 100%"
-      >
+      <Tabs v-model:selected="selected" style="width: 100%">
         <Tab title="导航一">Tab1</Tab>
         <Tab title="导航二">Tab2</Tab>
       </Tabs>
@@ -57,7 +53,7 @@ export default {
     const selected = ref("导航一");
     const code =
       `<template>
-  <Tabs :selected="selected" @updated:selected="selected = $event">
+  <Tabs v-model:selected="selected">
     <Tab title="导航一">Tab1</Tab>
     <Tab title="导航二">Tab2</Tab>
   </Tabs>

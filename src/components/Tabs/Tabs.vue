@@ -43,7 +43,7 @@ export default {
       return child.props.title;
     });
     const selectTitle = (title: string) => {
-      context.emit("updated:selected", title);
+      context.emit("update:selected", title);
     };
     const currentContent = computed(() => {
       return children.filter((child) => {

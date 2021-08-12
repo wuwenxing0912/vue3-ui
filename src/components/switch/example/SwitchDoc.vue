@@ -31,8 +31,8 @@
 </template>
 
 <script lang="ts">
-import SwitchDefault from "./example/SwitchDefault.vue";
-import SwitchDisabled from "./example/SwitchDisabled.vue";
+import SwitchDefault from "./SwitchDefault.vue";
+import SwitchDisabled from "./SwitchDisabled.vue";
 import { ref } from "vue";
 export default {
   components: {
@@ -59,5 +59,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../style/example.scss";
+@import "../../../style/example.scss";
 </style>

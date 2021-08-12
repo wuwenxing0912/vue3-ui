@@ -1,55 +1,20 @@
 <template>
-  <section>
-    <h1>组件和代码示例</h1>
-    <div class="example-container">
-      <Tabs v-model:selected="selected" style="width: 100%">
-        <Tab title="导航一">Tab1</Tab>
-        <Tab title="导航二">Tab2</Tab>
-      </Tabs>
-    </div>
-    <div class="description">
-      <span class="text">标签页的基本用法。</span>
-      <span
-        class="code-icon"
-        @click="changeCodeVisible"
-        @mouseenter="changeCodeTipVisible"
-        @mouseleave="changeCodeTipVisible"
-      >
-        <svg class="icon">
-          <use xlink:href="#icon-code"></use>
-        </svg>
-      </span>
-      <span class="pop-content" v-if="codeTipVisible">
-        {{ codeVisible ? "收起代码" : "显示代码" }}
-      </span>
-    </div>
-    <div class="code-area" v-if="codeVisible">
-      <pre
-        class="language-html"
-        v-html="Prism.highlight(code, Prism.languages.html, 'html')"
-      ></pre>
-    </div>
-  </section>
+  <Example title="组件" description="标签页的基本用法。" :code="code">
+    <Tabs v-model:selected="selected" style="width: 100%">
+      <Tab title="导航一">Tab1</Tab>
+      <Tab title="导航二">Tab2</Tab>
+    </Tabs>
+  </Example>
 </template>
 
 <script lang="ts">
 import { ref } from "vue";
 import Tabs from "../Tabs.vue";
 import Tab from "../Tab.vue";
-import "prismjs";
-import "prismjs/themes/prism-okaidia.css";
-const Prism = window.Prism;
+import Example from "../../utils/Example.vue";
 export default {
-  components: { Tabs, Tab },
+  components: { Tabs, Tab, Example },
   setup() {
-    const codeVisible = ref(false);
-    const changeCodeVisible = () => {
-      codeVisible.value = !codeVisible.value;
-    };
-    const codeTipVisible = ref(false);
-    const changeCodeTipVisible = () => {
-      codeTipVisible.value = !codeTipVisible.value;
-    };
     const selected = ref("导航一");
     const code =
       `<template>
@@ -72,12 +37,7 @@ export default {
 }
 <` + "/script>";
     return {
-      codeVisible,
-      changeCodeVisible,
-      codeTipVisible,
-      changeCodeTipVisible,
       selected,
-      Prism,
       code,
     };
   },

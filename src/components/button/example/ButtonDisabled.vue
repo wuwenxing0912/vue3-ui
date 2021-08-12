@@ -1,51 +1,34 @@
 <template>
-  <section>
-    <div class="example-container">
-      <Button levle="default" style="margin-right: 20px" disabled>Default </Button>
-      <Button levle="primary" style="margin-right: 20px" disabled>Primary</Button>
-      <Button levle="dashed" style="margin-right: 20px" disabled>Dashed</Button>
-      <Button levle="danger" disabled>Danger</Button>
-    </div>
-    <div class="description">
-      <span class="text">按钮禁用：设置按钮 disabled 禁用状态。</span>
-      <span
-        class="code-icon"
-        @click="changeCodeVisible"
-        @mouseenter="changeCodeTipVisible"
-        @mouseleave="changeCodeTipVisible"
-      >
-        <svg class="icon">
-          <use xlink:href="#icon-code"></use>
-        </svg>
-      </span>
-      <span class="pop-content" v-if="codeTipVisible">
-        {{ codeVisible ? "收起代码" : "显示代码" }}
-      </span>
-    </div>
-    <div class="code-area" v-if="codeVisible">code</div>
-  </section>
+  <Example description="按钮禁用：设置按钮 disabled 禁用状态。" :code="code">
+    <Button levle="default" style="margin-right: 20px" disabled>Default </Button>
+    <Button levle="primary" style="margin-right: 20px" disabled>Primary</Button>
+    <Button levle="dashed" style="margin-right: 20px" disabled>Dashed</Button>
+    <Button levle="danger" disabled>Danger</Button>
+  </Example>
 </template>
 
 <script lang="ts">
 import { ref } from "vue";
 import Button from "../Button.vue";
+import Example from "../../utils/Example.vue";
 export default {
-  components: { Button: Button },
+  components: { Button: Button, Example },
   setup() {
-    const codeVisible = ref(false);
-    const changeCodeVisible = () => {
-      codeVisible.value = !codeVisible.value;
-    };
-    const codeTipVisible = ref(false);
-    const changeCodeTipVisible = () => {
-      codeTipVisible.value = !codeTipVisible.value;
-    };
-    return {
-      codeVisible,
-      changeCodeVisible,
-      codeTipVisible,
-      changeCodeTipVisible,
-    };
+    const code =
+      `<template>
+  <Button levle="default" disabled>Default</Button>
+  <Button levle="primary" disabled>Primary</Button>
+  <Button levle="dashed" disabled>Dashed</Button>
+  <Button levle="danger" disabled>Danger</Button>
+</template>
+    
+<script>
+import Button from "./Button.vue";
+export default {
+  components: { Button }
+}
+<` + "/script>";
+    return { code };
   },
 };
 </script>

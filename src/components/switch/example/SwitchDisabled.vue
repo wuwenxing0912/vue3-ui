@@ -1,48 +1,30 @@
 <template>
-  <section>
-    <div class="example-container">
-      <Switch disabled />
-    </div>
-    <div class="description">
-      <span class="text">开关禁用状态。</span>
-      <span
-        class="code-icon"
-        @click="changeCodeVisible"
-        @mouseenter="changeCodeTipVisible"
-        @mouseleave="changeCodeTipVisible"
-      >
-        <svg class="icon">
-          <use xlink:href="#icon-code"></use>
-        </svg>
-      </span>
-      <span class="pop-content" v-if="codeTipVisible">
-        {{ codeVisible ? "收起代码" : "显示代码" }}
-      </span>
-    </div>
-    <div class="code-area" v-if="codeVisible">code</div>
-  </section>
+  <Example description="开关禁用状态。" :code="code">
+    <Switch disabled />
+  </Example>
 </template>
 
 <script lang="ts">
 import { ref } from "vue";
 import Switch from "../Switch.vue";
+import Example from "../../utils/Example.vue";
 export default {
-  components: { Switch },
+  components: { Switch, Example },
   setup() {
-    const codeVisible = ref(false);
-    const changeCodeVisible = () => {
-      codeVisible.value = !codeVisible.value;
-    };
-    const codeTipVisible = ref(false);
-    const changeCodeTipVisible = () => {
-      codeTipVisible.value = !codeTipVisible.value;
-    };
-    return {
-      codeVisible,
-      changeCodeVisible,
-      codeTipVisible,
-      changeCodeTipVisible,
-    };
+    const checked = ref(true);
+    const code =
+      `<template>
+  <Switch disabled />
+</template>
+    
+<script>
+import { ref } from "vue";
+import Switch from "./Switch.vue";
+export default {
+  components: { Switch }
+}
+<` + "/script>";
+    return { code };
   },
 };
 </script>

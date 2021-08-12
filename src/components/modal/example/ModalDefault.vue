@@ -1,71 +1,68 @@
 <template>
-  <section>
-    <h1>组件和代码示例</h1>
-    <div class="example-container">
-      <Button levle="primary" @click="changeModalVisible"> open Modal </Button>
-      <Modal
-        :visible="modalVisible"
-        @update:visible="modalVisible = $event"
-        :onClose="changeModalVisible"
-        :onConfirm="changeModalVisible"
-      >
-        <template v-slot:title>对话框</template>
-        <template v-slot:content>
-          <div>more content...</div>
-          <div>more content...</div>
-          <div>more content...</div>
-        </template>
-        <template v-slot:cancel>取消</template>
-        <template v-slot:confirm>确定</template>
-      </Modal>
-    </div>
-    <div class="description">
-      <span class="text">对话框的基本用法。</span>
-      <span
-        class="code-icon"
-        @click="changeCodeVisible"
-        @mouseenter="changeCodeTipVisible"
-        @mouseleave="changeCodeTipVisible"
-      >
-        <svg class="icon">
-          <use xlink:href="#icon-code"></use>
-        </svg>
-      </span>
-      <span class="pop-content" v-if="codeTipVisible">
-        {{ codeVisible ? "收起代码" : "显示代码" }}
-      </span>
-    </div>
-    <div class="code-area" v-if="codeVisible">code</div>
-  </section>
+  <Example title="组件和代码示例" description="对话框的基本用法。" :code="code">
+    <Button levle="primary" @click="changeModalVisible"> open Modal </Button>
+    <Modal
+      v-model:visible="modalVisible"
+      :onClose="changeModalVisible"
+      :onConfirm="changeModalVisible"
+    >
+      <template v-slot:title>对话框</template>
+      <template v-slot:content>
+        <div>more content...</div>
+        <div>more content...</div>
+        <div>more content...</div>
+      </template>
+      <template v-slot:cancel>取消</template>
+      <template v-slot:confirm>确定</template>
+    </Modal>
+  </Example>
 </template>
 
 <script lang="ts">
 import { ref } from "vue";
 import Button from "../../button/Button.vue";
 import Modal from "../Modal.vue";
+import Example from "../../utils/Example.vue";
 export default {
-  components: { Button, Modal },
+  components: { Button, Modal, Example },
   setup() {
-    const codeVisible = ref(false);
-    const changeCodeVisible = () => {
-      codeVisible.value = !codeVisible.value;
-    };
-    const codeTipVisible = ref(false);
-    const changeCodeTipVisible = () => {
-      codeTipVisible.value = !codeTipVisible.value;
-    };
+    const code =
+      `<template>
+  <Modal
+      v-model:visible="modalVisible"
+      :onClose="changeModalVisible"
+      :onConfirm="changeModalVisible"
+    >
+      <template v-slot:title>对话框</template>
+      <template v-slot:content>
+        <div>more content...</div>
+        <div>more content...</div>
+        <div>more content...</div>
+      </template>
+      <template v-slot:cancel>取消</template>
+      <template v-slot:confirm>确定</template>
+  </Modal>
+</template>
+    
+<script>
+import { ref } from "vue";
+import Modal from "./Modal.vue";
+export default {
+  components: { Modal },
+  setup() {
     const modalVisible = ref(false);
     const changeModalVisible = () => {
       modalVisible.value = !modalVisible.value;
     };
-    return {
-      codeVisible,
-      changeCodeVisible,
-      codeTipVisible,
-      changeCodeTipVisible,
-      modalVisible,
-      changeModalVisible,
+    return { modalVisible, changeModalVisible };
+  }
+}
+<` + "/script>";
+    const modalVisible = ref(false);
+    const changeModalVisible = () => {
+      modalVisible.value = !modalVisible.value;
     };
+    return { modalVisible, changeModalVisible, code };
   },
 };
 </script>

@@ -45,15 +45,15 @@
 </template>
 
 <script lang="ts">
-import ButtonDefault from "./example/ButtonDefault.vue";
-import ButtonDisabled from "./example/ButtonDisabled.vue";
-import ButtonSize from "./example/ButtonSize.vue";
-import ButtonLoading from "./example/ButtonLoading.vue";
+import ButtonDefault from "./ButtonDefault.vue";
+import ButtonDisabled from "./ButtonDisabled.vue";
+import ButtonSize from "./ButtonSize.vue";
+import ButtonLoading from "./ButtonLoading.vue";
 export default {
   components: { ButtonDefault, ButtonDisabled, ButtonLoading, ButtonSize },
 };
 </script>
 
 <style lang="scss">
-@import "../../style/example.scss";
+@import "../../../style/example.scss";
 </style>

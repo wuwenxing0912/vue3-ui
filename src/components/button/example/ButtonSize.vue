@@ -1,75 +1,64 @@
 <template>
-  <section>
-    <div class="example-container">
-      <Button
-        levle="default"
-        style="margin-right: 20px"
-        :size="size"
-        @click="changeSize('large')"
-        >Large
-      </Button>
-      <Button
-        levle="primary"
-        style="margin-right: 20px"
-        :size="size"
-        @click="changeSize('middle')"
-        >Middle
-      </Button>
-      <Button
-        levle="dashed"
-        style="margin-right: 20px"
-        :size="size"
-        @click="changeSize('middle')"
-        >Middle
-      </Button>
-      <Button levle="danger" :size="size" @click="changeSize('small')">Small</Button>
-    </div>
-    <div class="description">
-      <span class="text">按钮尺寸：按钮有大、中、小三种尺寸。</span>
-      <span
-        class="code-icon"
-        @click="changeCodeVisible"
-        @mouseenter="changeCodeTipVisible"
-        @mouseleave="changeCodeTipVisible"
-      >
-        <svg class="icon">
-          <use xlink:href="#icon-code"></use>
-        </svg>
-      </span>
-      <span class="pop-content" v-if="codeTipVisible">
-        {{ codeVisible ? "收起代码" : "显示代码" }}
-      </span>
-    </div>
-    <div class="code-area" v-if="codeVisible">code</div>
-  </section>
+  <Example description="按钮尺寸：按钮有大、中、小三种尺寸。" :code="code">
+    <Button
+      levle="default"
+      style="margin-right: 20px"
+      :size="size"
+      @click="changeSize('large')"
+      >Large
+    </Button>
+    <Button
+      levle="primary"
+      style="margin-right: 20px"
+      :size="size"
+      @click="changeSize('middle')"
+      >Middle
+    </Button>
+    <Button
+      levle="dashed"
+      style="margin-right: 20px"
+      :size="size"
+      @click="changeSize('middle')"
+      >Middle
+    </Button>
+    <Button levle="danger" :size="size" @click="changeSize('small')">Small</Button>
+  </Example>
 </template>
 
 <script lang="ts">
 import { ref } from "vue";
 import Button from "../Button.vue";
+import Example from "../../utils/Example.vue";
 export default {
-  components: { Button: Button },
+  components: { Button: Button, Example },
   setup() {
-    const codeVisible = ref(false);
-    const changeCodeVisible = () => {
-      codeVisible.value = !codeVisible.value;
-    };
-    const codeTipVisible = ref(false);
-    const changeCodeTipVisible = () => {
-      codeTipVisible.value = !codeTipVisible.value;
-    };
     const size = ref("middle");
     const changeSize = (value: string) => {
       size.value = value;
     };
-    return {
-      codeVisible,
-      changeCodeVisible,
-      codeTipVisible,
-      changeCodeTipVisible,
-      size,
-      changeSize,
+    const code =
+      `<template>
+  <Button levle="default" :size="size" @click="changeSize('large')">Default</Button>
+  <Button levle="primary" :size="size" @click="changeSize('middle')">Primary</Button>
+  <Button levle="dashed" :size="size" @click="changeSize('middle')">Dashed</Button>
+  <Button levle="danger" :size="size" @click="changeSize('small')">Danger</Button>
+</template>
+    
+<script>
+import { ref } from "vue";
+import Button from "./Button.vue";
+export default {
+  components: { Button },
+  setup() {
+    const size = ref("middle");
+    const changeSize = (value: string) => {
+      size.value = value;
     };
+    return { size, changeSize }
+  }
+}
+<` + "/script>";
+    return { size, changeSize, code };
   },
 };
 </script>

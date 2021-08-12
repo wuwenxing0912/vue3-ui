@@ -21,11 +21,15 @@
       </aside>
       <main><router-view></router-view></main>
     </div>
+    <div class="home-footer">
+      <span>&copy; xing</span>
+      <span class="text">X-UI</span>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import TopNav from "../components/TopNav.vue";
+import TopNav from "./TopNav.vue";
 export default {
   components: {
     TopNav,
@@ -94,6 +98,19 @@ $main-color: #007aff; //#42b983
       flex-grow: 1;
       padding: 16px;
       font-size: 16px;
+    }
+  }
+  .home-footer {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #343434;
+    color: white;
+    font-size: 14px;
+    & .text {
+      margin-left: 2em;
     }
   }
 }

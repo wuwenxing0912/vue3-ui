@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import TabsDefault from "./example/TabsDefault.vue";
+import TabsDefault from "./TabsDefault.vue";
 export default {
   components: {
     TabsDefault,

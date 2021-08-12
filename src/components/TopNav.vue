@@ -3,10 +3,13 @@
     <div class="logo">
       <img src="../assets/logo.png" alt="X-UI" /><span class="text">X-UI</span>
     </div>
-    <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
-    </ul>
+    <div className="gh">
+      <a href="https://github.com/wuwenxing0912/vue3-ui" target="blank">
+        <svg class="gh-icon">
+          <use xlink:href="#icon-github"></use>
+        </svg>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -38,6 +41,14 @@ export default {};
     > .text {
       margin-left: 6px;
     }
+  }
+
+  & .gh .gh-icon {
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    margin-right: 32px;
+    cursor: pointer;
   }
 
   > .menu {

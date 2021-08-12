@@ -66,7 +66,7 @@
 </template>
 
 <script lang="ts">
-import ModalDefault from "./example/ModalDefault.vue";
+import ModalDefault from "./ModalDefault.vue";
 import { ref } from "vue";
 export default {
   components: {
@@ -92,5 +92,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../style/example.scss";
+@import "../../../style/example.scss";
 </style>

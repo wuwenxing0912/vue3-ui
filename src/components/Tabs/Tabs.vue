@@ -100,11 +100,12 @@ export default {
 <style lang="scss" scoped>
 $main-color: #007aff;
 $border-color: #d9d9d9;
+$font-color: #000000d9;
 .x-tabs {
   &-nav {
     position: relative;
     display: flex;
-    color: #333;
+    color: $font-color;
     &-item {
       cursor: pointer;
       &.selected {
@@ -117,6 +118,10 @@ $border-color: #d9d9d9;
       background: $main-color;
       transition: all 0.25s;
     }
+  }
+  &-content {
+    font-size: 14px;
+    color: $font-color;
   }
 
   &.top {
@@ -136,7 +141,7 @@ $border-color: #d9d9d9;
       }
     }
     & .x-tabs-content {
-      padding: 8px 0;
+      padding: 16px 0;
     }
   }
 
@@ -185,8 +190,7 @@ $border-color: #d9d9d9;
       }
     }
     & .x-tabs-content {
-      padding-top: 8px;
-      padding-bottom: 16px;
+      padding: 16px 0;
     }
   }
 

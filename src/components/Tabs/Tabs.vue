@@ -33,9 +33,9 @@ export default {
     },
     direction: {
       type: String,
-      default: "bottom",
+      default: "right",
       validator(value) {
-        return ["top", "left", "bottom"].includes(value);
+        return ["top", "left", "bottom", "right"].includes(value);
       },
     },
   },
@@ -73,6 +73,7 @@ export default {
           underline.value.style.left = `${left - navLeft}px`;
           break;
         case "left":
+        case "right":
           underline.value.style.height = `${height}px`;
           underline.value.style.top = `${top - navTop}px`;
           break;
@@ -163,6 +164,7 @@ $border-color: #d9d9d9;
       padding: 8px 16px;
     }
   }
+
   &.bottom {
     display: flex;
     flex-direction: column-reverse;
@@ -185,6 +187,31 @@ $border-color: #d9d9d9;
     & .x-tabs-content {
       padding-top: 8px;
       padding-bottom: 16px;
+    }
+  }
+
+  &.right {
+    display: flex;
+    flex-direction: row-reverse;
+    & .x-tabs-nav.right {
+      border-left: 1px solid $border-color;
+      flex-direction: column;
+      & .x-tabs-nav-item {
+        padding: 8px 16px;
+        margin-bottom: 16px;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+      & .x-tabs-nav-item-underline {
+        top: 0;
+        width: 2px;
+        left: -1px;
+      }
+    }
+    & .x-tabs-content {
+      flex-grow: 1;
+      padding: 8px 16px;
     }
   }
 }

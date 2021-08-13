@@ -33,7 +33,7 @@ export default {
     },
     direction: {
       type: String,
-      default: "right",
+      default: "top",
       validator(value) {
         return ["top", "left", "bottom", "right"].includes(value);
       },
@@ -132,7 +132,7 @@ $border-color: #d9d9d9;
       & .x-tabs-nav-item-underline {
         left: 0;
         bottom: -1px;
-        height: 3px;
+        height: 2px;
       }
     }
     & .x-tabs-content {
@@ -149,7 +149,7 @@ $border-color: #d9d9d9;
       & .x-tabs-nav-item {
         padding: 8px 16px;
         margin-bottom: 16px;
-        &:last-child {
+        &:last-of-type {
           margin-bottom: 0;
         }
       }
@@ -181,7 +181,7 @@ $border-color: #d9d9d9;
         top: 0;
         left: 0;
         bottom: -1px;
-        height: 3px;
+        height: 2px;
       }
     }
     & .x-tabs-content {

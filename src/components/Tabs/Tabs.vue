@@ -1,6 +1,6 @@
 <template>
-  <div class="x-tabs">
-    <div class="x-tabs-nav" ref="nav">
+  <div class="x-tabs" :class="direction">
+    <div class="x-tabs-nav" ref="nav" :class="direction">
       <div
         class="x-tabs-nav-item"
         v-for="(title, index) in titles"
@@ -15,9 +15,9 @@
       >
         {{ title }}
       </div>
-      <span class="x-tabs-nav-item-underline" ref="underline"></span>
+      <span class="x-tabs-nav-item-underline" :class="direction" ref="underline"></span>
     </div>
-    <div class="x-tabs-content">
+    <div class="x-tabs-content" :class="direction">
       <component class="x-tabs-content-item" :is="currentContent" :key="selected" />
     </div>
   </div>
@@ -30,6 +30,13 @@ export default {
   props: {
     selected: {
       type: String,
+    },
+    direction: {
+      type: String,
+      default: "top",
+      validator(value) {
+        return ["top", "left"].includes(value);
+      },
     },
   },
   setup(props, context) {
@@ -57,10 +64,21 @@ export default {
       const selectedItem = navItems.value.filter((item) => {
         return item.classList.contains("selected");
       })[0];
-      const navLeft = nav.value.getBoundingClientRect().left;
-      const { width, left } = selectedItem.getBoundingClientRect();
-      underline.value.style.width = `${width}px`;
-      underline.value.style.left = `${left - navLeft}px`;
+      const { left: navLeft, top: navTop } = nav.value.getBoundingClientRect();
+      const { width, height, left, top } = selectedItem.getBoundingClientRect();
+      switch (props.direction) {
+        case "top":
+          underline.value.style.width = `${width}px`;
+          underline.value.style.left = `${left - navLeft}px`;
+          break;
+        case "left":
+          underline.value.style.height = `${height}px`;
+          underline.value.style.top = `${top - navTop}px`;
+          break;
+
+        default:
+          break;
+      }
     };
     onMounted(setUnderlinePosition);
     onUpdated(setUnderlinePosition);
@@ -79,19 +97,14 @@ export default {
 
 <style lang="scss" scoped>
 $main-color: #007aff;
+$border-color: #d9d9d9;
 .x-tabs {
   &-nav {
     position: relative;
     display: flex;
     color: #333;
-    border-bottom: 1px solid #d9d9d9;
     &-item {
-      padding: 8px 0;
-      margin: 0 16px;
       cursor: pointer;
-      &:first-child {
-        margin-left: 0;
-      }
       &.selected {
         color: $main-color;
       }
@@ -99,15 +112,55 @@ $main-color: #007aff;
     &-item-underline {
       display: inline-block;
       position: absolute;
-      height: 3px;
       background: $main-color;
-      left: 0;
-      bottom: -1px;
       transition: all 0.25s;
     }
   }
-  &-content {
-    padding: 8px 0;
+
+  &.top {
+    & .x-tabs-nav.top {
+      border-bottom: 1px solid $border-color;
+      & .x-tabs-nav-item {
+        padding: 8px 0;
+        margin: 0 16px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+      & .x-tabs-nav-item-underline {
+        left: 0;
+        bottom: -1px;
+        height: 3px;
+      }
+    }
+    & .x-tabs-content {
+      padding: 8px 0;
+    }
+  }
+
+  &.left {
+    display: flex;
+    flex-direction: row;
+    & .x-tabs-nav.left {
+      border-right: 1px solid $border-color;
+      flex-direction: column;
+      & .x-tabs-nav-item {
+        padding: 8px 16px;
+        margin-bottom: 16px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      & .x-tabs-nav-item-underline {
+        top: 0;
+        width: 2px;
+        right: -1px;
+      }
+    }
+    & .x-tabs-content {
+      flex-grow: 1;
+      padding: 8px 16px;
+    }
   }
 }
 </style>

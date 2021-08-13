@@ -33,9 +33,9 @@ export default {
     },
     direction: {
       type: String,
-      default: "top",
+      default: "bottom",
       validator(value) {
-        return ["top", "left"].includes(value);
+        return ["top", "left", "bottom"].includes(value);
       },
     },
   },
@@ -68,6 +68,7 @@ export default {
       const { width, height, left, top } = selectedItem.getBoundingClientRect();
       switch (props.direction) {
         case "top":
+        case "bottom":
           underline.value.style.width = `${width}px`;
           underline.value.style.left = `${left - navLeft}px`;
           break;
@@ -160,6 +161,30 @@ $border-color: #d9d9d9;
     & .x-tabs-content {
       flex-grow: 1;
       padding: 8px 16px;
+    }
+  }
+  &.bottom {
+    display: flex;
+    flex-direction: column-reverse;
+    & .x-tabs-nav.bottom {
+      border-top: 1px solid $border-color;
+      & .x-tabs-nav-item {
+        padding: 8px 0;
+        margin: 0 16px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+      & .x-tabs-nav-item-underline {
+        top: 0;
+        left: 0;
+        bottom: -1px;
+        height: 3px;
+      }
+    }
+    & .x-tabs-content {
+      padding-top: 8px;
+      padding-bottom: 16px;
     }
   }
 }

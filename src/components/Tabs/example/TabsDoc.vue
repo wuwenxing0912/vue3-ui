@@ -1,5 +1,6 @@
 <template>
-  <TabsDefault></TabsDefault>
+  <TabsDefault />
+  <TabsDirection />
   <section>
     <h1>API</h1>
     <table class="api-table" cellSpacing="0" cellPadding="0">
@@ -31,9 +32,11 @@
 
 <script lang="ts">
 import TabsDefault from "./TabsDefault.vue";
+import TabsDirection from "./TabsDirection.vue";
 export default {
   components: {
     TabsDefault,
+    TabsDirection,
   },
 };
 </script>

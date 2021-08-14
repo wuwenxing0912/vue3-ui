@@ -5,7 +5,10 @@
         class="x-tabs-nav-item"
         v-for="(title, index) in titles"
         :key="index"
-        :class="{ selected: title === selected }"
+        :class="{
+          selected: title[0] === selected,
+          disabled: typeof title[1] !== 'undefined',
+        }"
         @click="selectTitle(title)"
         :ref="
           (el) => {
@@ -13,7 +16,7 @@
           }
         "
       >
-        {{ title }}
+        {{ title[0] }}
       </div>
       <span class="x-tabs-nav-item-underline" :class="direction" ref="underline"></span>
     </div>
@@ -47,19 +50,22 @@ export default {
       }
     });
     const titles = children.map((child) => {
-      return child.props.title;
+      return [child.props.title, child.props.disabled];
     });
-    const selectTitle = (title: string) => {
-      context.emit("update:selected", title);
+    const selectTitle = (title: any[]) => {
+      if (typeof title[1] !== "undefined") return;
+      context.emit("update:selected", title[0]);
     };
     const currentContent = computed(() => {
       return children.filter((child) => {
         return child.props.title === props.selected;
       })[0];
     });
+
     const nav = ref<HTMLDivElement>(null);
     const navItems = ref<HTMLDivElement[]>([]);
     const underline = ref<HTMLSpanElement>(null);
+
     const setUnderlinePosition = () => {
       const selectedItem = navItems.value.filter((item) => {
         return item.classList.contains("selected");
@@ -67,7 +73,6 @@ export default {
       const { left: navLeft, top: navTop } = nav.value.getBoundingClientRect();
       const { width, height, left, top } = selectedItem.getBoundingClientRect();
       underline.value.style.inset = "";
-      console.log(underline.value.style.inset);
       switch (props.direction) {
         case "top":
           underline.value.style.width = `${width}px`;
@@ -94,6 +99,7 @@ export default {
           break;
       }
     };
+
     onMounted(setUnderlinePosition);
     onUpdated(setUnderlinePosition);
     return {
@@ -122,6 +128,11 @@ $font-color: #000000d9;
       cursor: pointer;
       &.selected {
         color: $main-color;
+      }
+      &.disabled,
+      &.disabled:hover {
+        cursor: not-allowed;
+        color: #00000040;
       }
     }
     &-item-underline {

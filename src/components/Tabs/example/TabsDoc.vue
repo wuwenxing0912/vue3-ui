@@ -1,5 +1,6 @@
 <template>
   <TabsDefault />
+  <TabsDisabled />
   <TabsDirection />
   <section>
     <h1>API</h1>
@@ -32,10 +33,12 @@
 
 <script lang="ts">
 import TabsDefault from "./TabsDefault.vue";
+import TabsDisabled from "./TabsDisabled.vue";
 import TabsDirection from "./TabsDirection.vue";
 export default {
   components: {
     TabsDefault,
+    TabsDisabled,
     TabsDirection,
   },
 };

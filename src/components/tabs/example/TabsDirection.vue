@@ -49,7 +49,12 @@ export default {
     };
     const code =
       `<template>
-  <Tabs v-model:selected="selected">
+  <Button levle="primary" @click="changeDirection('top')">Top</Button>
+  <Button levle="primary" @click="changeDirection('left')">Left</Button>
+  <Button levle="primary" @click="changeDirection('bottom')">Bottom</Button>
+  <Button levle="primary" @click="changeDirection('right')">Right</Button>
+  
+  <Tabs v-model:selected="selected" :direction="direction">
     <Tab title="Tab 1">Tab 1 内容区域</Tab>
     <Tab title="Tab 2">Tab 2 内容区域</Tab>
     <Tab title="Tab 3">Tab 3 内容区域</Tab>
@@ -62,11 +67,16 @@ export default {
 import { ref } from "vue";
 import Tabs from "./Tabs.vue";
 import Tab from "./Tab.vue";
+import Button from "./Button.vue";
 export default {
-  components: { Tabs, Tab },
+  components: { Tabs, Tab, Button },
   setup() {
     const selected = ref("Tab 1");
-    return { selected };
+    const direction = ref("top");
+    const changeDirection = (value: string) => {
+      direction.value = value;
+    };
+    return { selected, direction, changeDirection };
   }
 }
 <` + "/script>";

@@ -66,16 +66,28 @@ export default {
       })[0];
       const { left: navLeft, top: navTop } = nav.value.getBoundingClientRect();
       const { width, height, left, top } = selectedItem.getBoundingClientRect();
+      underline.value.style.inset = "";
+      console.log(underline.value.style.inset);
       switch (props.direction) {
         case "top":
+          underline.value.style.width = `${width}px`;
+          underline.value.style.left = `${left - navLeft}px`;
+          underline.value.style.height = "2px";
+          break;
         case "bottom":
           underline.value.style.width = `${width}px`;
           underline.value.style.left = `${left - navLeft}px`;
+          underline.value.style.height = "2px";
           break;
         case "left":
+          underline.value.style.height = `${height}px`;
+          underline.value.style.top = `${top - navTop}px`;
+          underline.value.style.width = "2px";
+          break;
         case "right":
           underline.value.style.height = `${height}px`;
           underline.value.style.top = `${top - navTop}px`;
+          underline.value.style.width = "2px";
           break;
 
         default:
@@ -97,7 +109,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $main-color: #007aff;
 $border-color: #d9d9d9;
 $font-color: #000000d9;
@@ -116,7 +128,6 @@ $font-color: #000000d9;
       display: inline-block;
       position: absolute;
       background: $main-color;
-      transition: all 0.25s;
     }
   }
   &-content {
@@ -138,6 +149,7 @@ $font-color: #000000d9;
         left: 0;
         bottom: -1px;
         height: 2px;
+        transition: left 0.25s;
       }
     }
     & .x-tabs-content {
@@ -162,6 +174,7 @@ $font-color: #000000d9;
         top: 0;
         width: 2px;
         right: -1px;
+        transition: top 0.25s;
       }
     }
     & .x-tabs-content {
@@ -187,6 +200,7 @@ $font-color: #000000d9;
         left: 0;
         bottom: -1px;
         height: 2px;
+        transition: left 0.25s;
       }
     }
     & .x-tabs-content {
@@ -211,6 +225,7 @@ $font-color: #000000d9;
         top: 0;
         width: 2px;
         left: -1px;
+        transition: top 0.25s;
       }
     }
     & .x-tabs-content {

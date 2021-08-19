@@ -1,7 +1,10 @@
 <template>
   <div class="top-nav">
     <div class="logo">
-      <img src="../assets/logo.png" alt="X-UI" /><span class="text">X-UI</span>
+      <svg class="vue-icon">
+        <use xlink:href="#icon-vue"></use>
+      </svg>
+      <span class="text">X-UI</span>
     </div>
     <div className="gh">
       <a href="https://github.com/wuwenxing0912/vue3-ui" target="blank">
@@ -34,9 +37,9 @@ export default {};
     justify-content: center;
     align-items: center;
     margin-left: 32px;
-    > img {
-      width: 40px;
-      height: 40px;
+    > .vue-icon {
+      width: 1.5em;
+      height: 1.5em;
     }
     > .text {
       margin-left: 6px;

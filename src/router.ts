@@ -12,7 +12,7 @@ export const router = createRouter({
   history: history,
   routes: [
     // { path: "/", component: Home },
-    { path: "/", component: Document, redirect: "/components/button" },
+    { path: "/", component: Document, redirect: "/components/introduction" },
     {
       path: "/components",
       component: Document,

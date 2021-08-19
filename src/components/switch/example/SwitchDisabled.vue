@@ -11,14 +11,12 @@ import Example from "../../utils/Example.vue";
 export default {
   components: { Switch, Example },
   setup() {
-    const checked = ref(true);
     const code =
       `<template>
   <Switch disabled />
 </template>
     
 <script>
-import { ref } from "vue";
 import Switch from "./Switch.vue";
 export default {
   components: { Switch }

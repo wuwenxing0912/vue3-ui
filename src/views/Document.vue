@@ -3,6 +3,15 @@
     <TopNav />
     <div class="content">
       <aside>
+        <h2 class="introduction-h2">X-UI</h2>
+        <ol>
+          <li>
+            <router-link to="/components/introduction">介绍</router-link>
+          </li>
+          <!-- <li>
+            <router-link to="/usage">开始使用</router-link>
+          </li> -->
+        </ol>
         <h2>组件</h2>
         <ol>
           <li>
@@ -30,9 +39,11 @@
 
 <script lang="ts">
 import TopNav from "./TopNav.vue";
+import Introduction from "./introduction.vue";
 export default {
   components: {
     TopNav,
+    Introduction,
   },
 };
 </script>
@@ -66,10 +77,13 @@ $main-color: #007aff; //#42b983
       // }
       border-right: 1px solid #eeeeee;
       margin-right: 32px;
+      & .introduction-h2 {
+        padding: 62px 16px 6px 30px;
+      }
 
       > h2 {
         font-size: 20px;
-        padding: 48px 16px 6px 30px;
+        padding: 12px 16px 6px 30px;
       }
       > ol {
         min-width: 12em;

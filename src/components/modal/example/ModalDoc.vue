@@ -1,5 +1,6 @@
 <template>
   <ModalDefault />
+  <ModalMask />
   <section>
     <h1>API</h1>
     <table class="api-table" cellSpacing="0" cellPadding="0">
@@ -67,10 +68,12 @@
 
 <script lang="ts">
 import ModalDefault from "./ModalDefault.vue";
+import ModalMask from "./ModalMask.vue";
 import { ref } from "vue";
 export default {
   components: {
     ModalDefault,
+    ModalMask,
   },
   setup() {
     const codeVisible = ref(false);

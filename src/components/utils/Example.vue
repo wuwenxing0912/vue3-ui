@@ -56,13 +56,11 @@ export default {
     const changeCodeTipVisible = () => {
       codeTipVisible.value = !codeTipVisible.value;
     };
-    const selected = ref("导航一");
     return {
       codeVisible,
       changeCodeVisible,
       codeTipVisible,
       changeCodeTipVisible,
-      selected,
       Prism,
     };
   },

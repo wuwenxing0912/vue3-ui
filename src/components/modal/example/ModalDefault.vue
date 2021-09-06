@@ -2,7 +2,8 @@
   <Example title="组件和代码示例" description="对话框的基本用法。" :code="code">
     <Button levle="primary" @click="changeModalVisible"> open Modal </Button>
     <Modal
-      v-model:visible="modalVisible"
+      :visible="modalVisible"
+      @update:visible="modalVisible = $event"
       :onClose="changeModalVisible"
       :onConfirm="changeModalVisible"
     >

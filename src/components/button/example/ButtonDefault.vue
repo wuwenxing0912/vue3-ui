@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
 import Button from "../Button.vue";
 import Example from "../../utils/Example.vue";
 export default {
